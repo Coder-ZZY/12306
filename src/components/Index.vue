@@ -23,9 +23,10 @@ import MainFirst from "@/components/Main-First";
 import List from "@/components/List";
 import Footer from "@/components/Footer";
 import MainSecond from "@/components/Main-Second";
+import Sidebar from "@/components/Sidebar";
 export default {
   name: "Index",
-  components: {MainSecond, MainFirst, Header, List, Footer},
+  components: {MainSecond, MainFirst, Header, List, Footer, Sidebar},
   data() {
     return {
     }
