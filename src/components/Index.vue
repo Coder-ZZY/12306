@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Sidebar/>
     <el-container>
       <el-header class = "header" >
         <Header/>
@@ -23,9 +24,10 @@ import MainFirst from "@/components/Main-First";
 import SecondFirst from "@/components/Second-First";
 import List from "@/components/List";
 import Footer from "@/components/Footer";
+import Sidebar from "@/components/Sidebar";
 export default {
   name: "Index",
-  components: {MainFirst, Header, SecondFirst, List, Footer},
+  components: {MainFirst, Header, SecondFirst, List, Footer, Sidebar},
   data() {
     return {
     }
