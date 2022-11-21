@@ -20,13 +20,13 @@
 <script>
 import Header from "@/components/Header";
 import MainFirst from "@/components/Main-First";
+import MainSecond from "@/components/Main-Second";
 import List from "@/components/List";
 import Footer from "@/components/Footer";
-import MainSecond from "@/components/Main-Second";
 import Sidebar from "@/components/Sidebar";
 export default {
   name: "Index",
-  components: {MainSecond, MainFirst, Header, List, Footer, Sidebar},
+  components: { MainFirst, MainSecond,  Header, List, Footer, Sidebar},
   data() {
     return {
     }
