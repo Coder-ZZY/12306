@@ -7,6 +7,7 @@
 
       <el-main class="main">
       <Main-First/>
+      <Second-First/>
       </el-main>
       <el-footer class="footer">
 
@@ -18,9 +19,10 @@
 <script>
 import Header from "@/components/Header";
 import MainFirst from "@/components/Main-First";
+import SecondFirst from "@/components/Second-First";
 export default {
   name: "Index",
-  components: {MainFirst, Header},
+  components: {MainFirst, Header, SecondFirst},
   data() {
     return {
     }
