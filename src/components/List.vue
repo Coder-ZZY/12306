@@ -124,6 +124,7 @@ export default {
 .demo-tabs {
   width: 80%;
   margin-left: 150px;
+  margin-top: 40px;
 }
 
 .demo-tabs > .el-tabs__content {

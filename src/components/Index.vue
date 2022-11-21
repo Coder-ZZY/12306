@@ -6,8 +6,8 @@
       </el-header>
 
       <el-main class="main">
-      <Main-First/>
-      <Second-First/>
+      <MainFirst/>
+      <MainSecond/>
       <List/>
       </el-main>
       <el-footer class="footer">
@@ -20,12 +20,12 @@
 <script>
 import Header from "@/components/Header";
 import MainFirst from "@/components/Main-First";
-import SecondFirst from "@/components/Second-First";
 import List from "@/components/List";
 import Footer from "@/components/Footer";
+import MainSecond from "@/components/Main-Second";
 export default {
   name: "Index",
-  components: {MainFirst, Header, SecondFirst, List, Footer},
+  components: {MainSecond, MainFirst, Header, List, Footer},
   data() {
     return {
     }
