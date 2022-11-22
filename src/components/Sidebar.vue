@@ -2,7 +2,8 @@
   <div :width="isCollapse ? '0' : '200px'">
     <el-menu
       class="el-menu-vertical-demo"
-      style="position: fixed; right: 0; bottom: 100px; z-index: 99999"
+      :style="'position: fixed; right: 0; bottom: 300px; z-index: 99999;display:'+isDisplay"
+      @select="handleSelect"
     >
       <el-menu-item index="1" @click="toNews" id="news">
         <template #title>
@@ -18,20 +19,11 @@
         <el-icon><PictureFilled /></el-icon>
         <template #title>App 下载</template>
       </el-menu-item>
+      <el-menu-item index="4">
+        <el-icon><Close /></el-icon>
+        <template #title>关闭</template>
+      </el-menu-item>
     </el-menu>
-    <el-button
-      @click="handelColse"
-      style="
-        width: 125px;
-        height: 40px;
-        border: none;
-        position: fixed;
-        right: 0;
-        bottom: 70px;
-        z-index: 99999;
-      "
-      ><el-icon><Close /></el-icon>关闭</el-button
-    >
   </div>
 </template>
 
@@ -52,6 +44,7 @@ export default {
   data() {
     return {
       isCollapse: false,
+      isDisplay: "inline"
     };
   },
   methods: {
@@ -61,8 +54,10 @@ export default {
         window.scrollTo({ top: 1000, left: 0, behavior: "smooth" });
       });
     },
-    handelColse() {
-      this.isCollapse = !this.isCollapse;
+    handleSelect(index) {
+      if (index == 4) {
+        this.isDisplay = "None";
+      }
     },
   },
 };
