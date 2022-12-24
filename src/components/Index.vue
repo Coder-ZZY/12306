@@ -4,11 +4,11 @@
       <el-header class = "header" >
         <Header/>
       </el-header>
-
       <el-main class="main">
       <MainFirst/>
-      <MainSecond/>
-      <List/>
+        <MainSecond />
+        <List />
+        <myForm />
       </el-main>
       <el-footer class="footer">
         <Footer/>
@@ -25,9 +25,10 @@ import MainSecond from "@/components/Main-Second";
 import List from "@/components/List";
 import Footer from "@/components/Footer";
 import Sidebar from "@/components/Sidebar";
+import myForm from "@/components/myForm";
 export default {
   name: "Index",
-  components: { MainFirst, MainSecond,  Header, List, Footer, Sidebar},
+  components: { MainFirst,myForm, MainSecond,  Header, List, Footer, Sidebar},
   data() {
     return {
     }
