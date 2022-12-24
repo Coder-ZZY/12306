@@ -313,7 +313,7 @@
                   <el-input id="departure" v-model="ruleForm5.weather" style="width: 250px;" placeholder="简拼/全拼/汉字"/>
                 </el-form-item>
                 <el-form-item>
-                  <el-button type="warning" style="width:100%;" @click="submitForm('ruleForm5')">查询</el-button>
+                  <el-button type="warning" style="width:100%;" @click="jump()">查询</el-button>
                 </el-form-item>
               </el-form>
             </transition>
@@ -453,10 +453,30 @@ export default {
     click(i) {
       this.index = i;
     },
+    jump (){
+      let weatherid;
+       if(this.ruleForm5.weather == "北京"){
+         weatherid='101010100';
+         window.open('http://www.weather.com.cn/weather/'+weatherid+'.shtml');
+       }
+       else if(this.ruleForm5.weather == "上海"){
+         weatherid='101020100';
+         window.open('http://www.weather.com.cn/weather/'+weatherid+'.shtml');
+       }
+       else if(this.ruleForm5.weather == "合肥"){
+         weatherid='101220101';
+         window.open('http://www.weather.com.cn/weather/'+weatherid+'.shtml');
+       }
+       else if(this.ruleForm5.weather == "郑州"){
+         weatherid='101180101';
+         window.open('http://www.weather.com.cn/weather/'+weatherid+'.shtml');
+       }
+       else
+       {alert("没有输入城市的天气，请检查后重试！")}
+    },
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('submit!');
         } else {
           console.log('error submit!!');
           return false;
