@@ -19,16 +19,16 @@
 </template>
 
 <script>
+import myForm from "@/components/myForm";
 import Header from "@/components/Header";
 import MainFirst from "@/components/Main-First";
 import MainSecond from "@/components/Main-Second";
 import List from "@/components/List";
 import Footer from "@/components/Footer";
 import Sidebar from "@/components/Sidebar";
-import myForm from "@/components/myForm";
 export default {
   name: "Index",
-  components: { MainFirst,myForm, MainSecond,  Header, List, Footer, Sidebar},
+  components: { MainFirst, myForm, MainSecond,  Header, List, Footer, Sidebar},
   data() {
     return {
     }

@@ -217,7 +217,10 @@ export default {
   margin: 24px 0 0 0;
   width: 990px;
   height: 40px;
+  background-image: url(../assets/bg/bg-train.png);
+  background-size: 500px ;
   background-repeat: no-repeat;
+  background-position: left;
   position: relative;
 }
 .searchBox {
@@ -252,7 +255,7 @@ export default {
   position: absolute;
   top: 40px;
   left: 0;
-  background: #fff;
+  background: #ffffff;
   border: 1px solid #DEDEDE;
   width: 90px;
   padding: 10px;
@@ -286,5 +289,17 @@ export default {
 }
 a {
   text-decoration: none;
+}
+.back {
+  width: 1300px;
+  height: 70px;
+  margin-top: 10px;
+  margin-left: 70px;
+  background-image: url(../assets/bg/bg-train.png);
+  background-size: 1200px ;
+  background-repeat: no-repeat;
+  background-position: left;
+  line-height: 70px;
+  position: relative;
 }
 </style>
