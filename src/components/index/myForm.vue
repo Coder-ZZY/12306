@@ -516,8 +516,8 @@ export default {
 </script>
 
 <style scoped>
-@import "../assets/css/index.css";
-@import "../assets/css/reset.css";
+@import "../../assets/css";
+@import "../../assets/css/reset.css";
 .el-form-item{
 
 }

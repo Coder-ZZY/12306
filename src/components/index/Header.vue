@@ -2,7 +2,7 @@
 <div style="height: 120px">
   <div class = "up">
     <div class = "logo">
-      <img src="../assets/logo.png" style="height: 50px">
+      <img src="../../assets/logo.png" style="height: 50px">
     </div>
     <div class = "right">
       <div class = "searchBox">
@@ -246,7 +246,7 @@ export default {
   margin: 24px 0 0 0;
   width: 990px;
   height: 40px;
-  background-image: url(../assets/bg/bg-train.png);
+  background-image: url(../../assets/bg/bg-train.png);
   background-size: 500px ;
   background-repeat: no-repeat;
   background-position: left;
@@ -324,7 +324,7 @@ a {
   height: 70px;
   margin-top: 10px;
   margin-left: 70px;
-  background-image: url(../assets/bg/bg-train.png);
+  background-image: url(../../assets/bg/bg-train.png);
   background-size: 1200px ;
   background-repeat: no-repeat;
   background-position: left;

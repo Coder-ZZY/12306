@@ -19,13 +19,13 @@
 </template>
 
 <script>
-import myForm from "@/components/myForm";
-import Header from "@/components/Header";
-import MainFirst from "@/components/Main-First";
-import MainSecond from "@/components/Main-Second";
-import List from "@/components/List";
-import Footer from "@/components/Footer";
-import Sidebar from "@/components/Sidebar";
+import myForm from "@/components/index/myForm";
+import Header from "@/components/index/Header";
+import MainFirst from "@/components/index/Main-First";
+import MainSecond from "@/components/index/Main-Second";
+import List from "@/components/index/List";
+import Footer from "@/components/index/Footer";
+import Sidebar from "@/components/index/Sidebar";
 export default {
   name: "Index",
   components: { MainFirst, myForm, MainSecond,  Header, List, Footer, Sidebar},

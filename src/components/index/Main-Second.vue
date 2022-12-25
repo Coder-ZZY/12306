@@ -4,12 +4,12 @@
       <ul class="service">
         <li>
           <a href="https://cx.12306.cn/tlcx/index.html" target="_blank">
-            <img src="../assets/abanner/1.png">
+            <img src="../../assets/abanner/1.png">
           </a>
         </li>
         <li>
           <a href="https://exservice.12306.cn/excater/index.html" target="_blank">
-            <img src="../assets/abanner/2.png">
+            <img src="../../assets/abanner/2.png">
           </a>
         </li>
 
@@ -17,12 +17,12 @@
       <ul class="service">
         <li>
           <a href="https://kyfw.12306.cn/otn/view/my_insurance.html" target="_blank">
-            <img src="../assets/abanner/3.png">
+            <img src="../../assets/abanner/3.png">
           </a>
         </li>
         <li>
           <a href="https://kyfw.12306.cn/otn/view/commutation_index.html" target="_blank">
-            <img src="../assets/abanner/4.png">
+            <img src="../../assets/abanner/4.png">
           </a>
         </li>
 
@@ -84,25 +84,25 @@ export default {
     return {
       item1: [
         {
-          src: require("..//assets/journey/1.png"),
+          src: require("../../assets/journey/1.png"),
           title: "”环西部火车游” 高品质旅游版专线列车",
           money: 2560,
           url: "https://travel.12306.cn/portal/travel/detail/ff80808157df83c201644427880112ae"
         },
         {
-          src: require("..//assets/journey/2.png"),
+          src: require("../../assets/journey/2.png"),
           title: "“环西部火车游” 陇上江南·行摄山>水陇南...",
           money: 930,
           url: "https://travel.12306.cn/portal/travel/detail/ff80808157df83c20164457aed6012db"
         },
         {
-          src: require("..//assets/journey/3.png"),
+          src: require("../../assets/journey/3.png"),
           title: "“环西部火车游”华夏寻根·人文始祖天水两...",
           money: 980,
           url: "https://travel.12306.cn/portal/travel/detail/ff80808157df83c2016445b0fd5f1304"
         },
         {
-          src: require("..//assets/journey/4.png"),
+          src: require("../../assets/journey/4.png"),
           title: "“环西部火车游”精品旅游线路",
           money: 3380,
           url: "https://travel.12306.cn/portal/travel/detail/ff80808157df83c2016446996d9813a9"
@@ -110,25 +110,25 @@ export default {
       ],
       item2: [
         {
-          src: require("..//assets/journey/5.png"),
+          src: require("../../assets/journey/5.png"),
           title: "“环西部火车游”美丽甘南三日游",
           money: 880,
           url: "https://travel.12306.cn/portal/travel/detail/ff80808157df83c201644684cc7c1388"
         },
         {
-          src: require("..//assets/journey/6.png"),
+          src: require("../../assets/journey/6.png"),
           title: "“环西部火车游” 青海湖、茶卡两日游",
           money: 880,
           url: "https://travel.12306.cn/portal/travel/detail/ff80808157df83c2016446b4813013c0"
         },
         {
-          src: require("..//assets/journey/7.png"),
+          src: require("../../assets/journey/7.png"),
           title: "“环西部火车游”嘉敦5日游",
           money: 2260,
           url: "https://travel.12306.cn/portal/travel/detail/ff80808157df83c2016446ba8bc313cd"
         },
         {
-          src: require("..//assets/journey/8.png"),
+          src: require("../../assets/journey/8.png"),
           title: "“环西部火车游” 敦煌一地三日游",
           money: 1380,
           url: "https://travel.12306.cn/portal/travel/detail/ff80808157df83c2016446d31e1113e5"
