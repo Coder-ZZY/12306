@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface CommonQuestionsDao extends JpaRepository<CommonQuestions, Integer> {
     List<CommonQuestions> findAll();
+    List<CommonQuestions> findByContentContaining(String content);
 }

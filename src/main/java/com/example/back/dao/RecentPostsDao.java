@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface RecentPostsDao extends JpaRepository<RecentPosts, Integer> {
     List<RecentPosts> findAll();
+    List<RecentPosts> findByContentContaining(String content);
 }

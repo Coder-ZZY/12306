@@ -15,4 +15,8 @@ public class TicketsService {
     public List<Tickets> list() {
         return ticketsDao.findAll();
     }
+
+    public List<Tickets> listByStation(String startStation, String endStation) {
+        return ticketsDao.findByStation(startStation, endStation);
+    }
 }

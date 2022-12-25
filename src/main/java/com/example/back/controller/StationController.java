@@ -8,9 +8,12 @@ import com.example.back.service.RecentPostsService;
 import com.example.back.service.TicketsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class StationController {
@@ -43,7 +46,16 @@ public class StationController {
 
     @GetMapping("/api/tickets")
     @ResponseBody
-    public Result listTickets() {
-        return ResultFactory.buildSuccessResult(ticketsService.list());
+    public Result listTickets(@RequestParam("startStation") String startStation,
+                              @RequestParam("endStation") String endStation) {
+        return ResultFactory.buildSuccessResult(ticketsService.listByStation(startStation, endStation));
+    }
+
+    @GetMapping("/api/search")
+    @ResponseBody
+    public Result search(@RequestParam("wd") String word) {
+        List<Map<String, String>> all = commonQuestionsService.search(word);
+        all.addAll(recentPostsService.search(word));
+        return ResultFactory.buildSuccessResult(all);
     }
 }
