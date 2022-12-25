@@ -12,7 +12,7 @@
         >
           <!-- 标语 -->
           <div v-show="isShow" class="title">
-            LOGIN
+            登录
           </div>
         </transition>
         <transition
@@ -27,7 +27,7 @@
               <input class="username" v-model="loginUser.name" style="width: 185px"  placeholder="用户名"/>
             </div>
             <div style="flex: 1;justify-content: center;display: flex;align-items: center">
-              <input placeholder="密码"  v-model="loginUser.password" style="width: 185px" show-password/>
+              <input placeholder="密码"  v-model="loginUser.password" style="width: 185px" type="password"/>
             </div>
           </div>
         </transition>
@@ -53,7 +53,7 @@
         >
           <!--  注册表头-->
           <div v-show="!isShow" class="rigestTitle">
-            管理员注册
+            用户注册
           </div>
         </transition>
         <transition
@@ -62,38 +62,32 @@
             leave-active-class="animate__zoomOut"
             appear
         >
+
           <!--            注册表单-->
           <div  v-show="!isShow" class="registForm">
             <div style="flex: 1;display: flex;justify-content: center;align-items: center">
               用&nbsp;&nbsp;&nbsp;户&nbsp;&nbsp;&nbsp;名:
-              <el-input
+              <input
                   placeholder="请输入用户名"
                   v-model="regUser.regUsername"
                   style="width: 165px;margin-left: 10px"
-                  clearable
-              >
-              </el-input>
+              />
+            </div>
+            <div style="flex: 1;display: flex;justify-content: center;align-items: center">
+              身&nbsp;份&nbsp;证&nbsp;号:
+              <input
+                  placeholder="请输入身份证号"
+                  v-model="regUser.regUserid"
+                  style="width: 165px;margin-left: 10px"
+              />
             </div>
             <div style="flex: 1;display: flex;justify-content: center;align-items: center">
               密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:
-              <el-input placeholder="请输入密码" style="width: 165px;margin-left: 10px" v-model="regUser.regPwd" show-password></el-input>
+              <input placeholder="请输入密码" style="width: 165px;margin-left: 10px" v-model="regUser.regPwd" type="password"/>
             </div>
             <div style="flex: 1;display: flex;justify-content: center;align-items: center;">
               确&nbsp;认&nbsp;密&nbsp;码:
-              <el-input placeholder="请再次输入密码" style="width: 165px;margin-left: 10px" v-model="regUser.regRePwd" show-password></el-input>
-            </div>
-            <div style="flex: 1;display: flex;align-items: center">
-              管理员审核:
-              <template>
-                <el-select id="elselect"  v-model="regUser.selectValue" filterable style="width: 100px;margin-left: 10px"  placeholder="请选择">
-                  <el-option
-                      v-for="item in admins"
-                      :key="item.id"
-                      :label="item.nickname"
-                      :value="item.id">
-                  </el-option>
-                </el-select>
-              </template>
+              <input placeholder="请再次输入密码" style="width: 165px;margin-left: 10px" v-model="regUser.regRePwd" type="password"/>
             </div>
           </div>
         </transition>
@@ -168,10 +162,10 @@
 
 <script>
 import 'animate.css';
+import { ElMessage } from 'element-plus'
 // eslint-disable-next-line no-unused-vars
 import {Axios as request} from "axios";
 export default {
-
   name:'Login',
   data(){
     return{
@@ -185,6 +179,7 @@ export default {
       ////看看用不用转成用户对象
       regUser:{
         regUsername:'',
+        regUserid:'',
         regRePwd:'',
         regPwd:'',
         selectValue:"",
@@ -220,21 +215,61 @@ export default {
       this.isShow = !this.isShow
     },
     //用户登录
+    SuccessLogin(){
+      this.$message({
+        message: '登录成功，即将开始跳转……',
+        type: 'success'
+      });
+    },
+    FailLogin(){
+      this.$message.error('用户名或密码错误，请重新输入！');
+    },
+    EmptyLogin(){
+      this.$message.error('请输入用户名和密码');
+    },
     UserLogin(){
-      // this.request.post("http://localhost:9090/user/login",this.loginUser).then(res=>{
-      //   if(res.code=="200"){
-      //     localStorage.setItem("user",JSON.stringify(res.data))
-      //     this.$message.success("登陆成功！")
-      //     this.$router.push("/manage")
-      //   }else if(res.code=="400"){
-      //     this.$message.warning(res.msg)
-      //   }else if(res.code=="401"){
-      //     this.$message.error(res.msg)
-      //   }
-      //   else{
-      //     this.$message.error("用户名或密码错误！")
-      //   }
-      // })
+      if(this.loginUser.name.length == 0 || this.loginUser.password.length == 0){
+        this.EmptyLogin();
+      }
+      else{
+        this.$axios
+            .post('/login',{
+              username:this.loginUser.name,
+              password:this.loginUser.password,
+            })
+            .then(successResponse => {
+              if (successResponse.data.code === 200){
+                this.SuccessLogin();
+                setTimeout(() => {
+                  let username=this.loginUser.name;
+                  sessionStorage.setItem('username', username);
+                  this.$router.push('/index');
+                }, 500);
+              }
+              else{
+                this.FailLogin();
+              }
+            })
+            .catch(failResponse =>{
+
+            })
+      }
+    },
+    UserLogin2(){
+       this.request.post("http://localhost:9090/user/login",this.loginUser).then(res=>{
+         if(res.code=="200"){
+           localStorage.setItem("user",JSON.stringify(res.data))
+           this.$message.success("登陆成功！")
+           this.$router.push("/manage")
+         }else if(res.code=="400"){
+           this.$message.warning(res.msg)
+         }else if(res.code=="401"){
+           this.$message.error(res.msg)
+         }
+         else{
+           this.$message.error("用户名或密码错误！")
+         }
+       })
     },
     //加载管理员信息
     loadInfoOfAdmin(){
@@ -401,7 +436,7 @@ export default {
 
 .registForm input{
   outline: none;
-  height: 30%;
+  height: 50%;
   border-radius:13px ;
   padding-left: 10px;
   font-size: 12px;

@@ -91,8 +91,14 @@
           </li>
           <li class="item _item">|</li>
           <li class="item">
-            <a href="" style="color: black">登录</a>
-            <a href="" style="color: black;margin-left: 10px">注册</a>
+            <a v-show="isLoginFlag === 0" href="/login" style="color: black">登录</a>
+            <a v-show="isLoginFlag === 0" href="/login" style="color: black;margin-left: 10px">注册</a>
+            <span v-show="isLoginFlag === 1" style="color: black">您好，</span>
+            <span v-show="isLoginFlag === 1">{{username}}</span>
+          </li>
+          <li v-show="isLoginFlag === 1" class="item _item">|</li>
+          <li class="item">
+            <a v-show="isLoginFlag === 1" href="/login" @click="clearLoginInfo()" class="item-nav" >退出</a>
           </li>
         </ul>
       </div>
@@ -212,10 +218,29 @@ export default {
       Search,
       searchText: "",
       activeIndex: "1",
-      state: []
+      state: [],
+      isLoginFlag: 0,
+      username:"",
     }
   },
+   mounted() {
+     this.isLogin();
+   },
   methods: {
+    isLogin(){
+      if(sessionStorage.getItem('username')){
+        let username = sessionStorage.getItem('username');
+        this.username=username;
+        this.isLoginFlag=1;
+      }
+      else{
+        this.isLoginFlag=0;
+      }
+    },
+    clearLoginInfo(){
+      sessionStorage.removeItem('username');
+      this.isLoginFlag=0;
+    },
     querySearch(queryString, cb) {
       this.$axios.get('/search?wd=' + queryString ).then(resp => {
         if(resp && resp.data.code === 200) {
