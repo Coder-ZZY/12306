@@ -11,7 +11,7 @@
           <span>最新发布</span>
         </template>
       </el-menu-item>
-      <el-menu-item index="2">
+      <el-menu-item index="2" @click="server">
         <el-icon><PhoneFilled /></el-icon>
         <template #title>联系客服</template>
       </el-menu-item>
@@ -51,8 +51,11 @@ export default {
     toNews() {
       const news = document.getElementById("news");
       news.addEventListener("click", function (e) {
-        window.scrollTo({ top: 1000, left: 0, behavior: "smooth" });
+        window.scrollTo({ top: 2000, left: 0, behavior: "smooth" });
       });
+    },
+    server() {
+      window.open("https://www.12306.cn/index/view/infos/service_number.html");
     },
     handleSelect(index) {
       if (index == 4) {
