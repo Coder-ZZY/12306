@@ -3,12 +3,12 @@
     <div style="margin-left: 160px">
       <ul class="service">
         <li>
-          <a href="">
+          <a href="https://cx.12306.cn/tlcx/index.html">
             <img src="../assets/abanner/1.png">
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="https://exservice.12306.cn/excater/index.html">
             <img src="../assets/abanner/2.png">
           </a>
         </li>
@@ -16,12 +16,12 @@
       </ul>
       <ul class="service">
         <li>
-          <a href="">
+          <a href="https://kyfw.12306.cn/otn/view/my_insurance.html">
             <img src="../assets/abanner/3.png">
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="https://kyfw.12306.cn/otn/view/commutation_index.html">
             <img src="../assets/abanner/4.png">
           </a>
         </li>
@@ -34,7 +34,7 @@
           铁路旅游
         </div>
         <div style="float: right">
-          <a href="" style="text-decoration: none;color: #999">
+          <a href="https://travel.12306.cn/portal/" style="text-decoration: none;color: #999">
             更多>
           </a>
         </div>
@@ -42,7 +42,7 @@
       <div style="height: 508px;width: 1200px">
         <ul class="journey" style="margin-bottom: 0px;margin-top: 0px">
           <li v-for="item in item1">
-            <a href="">
+            <a href="https://travel.12306.cn/portal/travel/detail/ff80808157df83c201644427880112ae">
               <div>
                 <img :src="item.src">
               </div>
@@ -58,7 +58,7 @@
         </ul>
         <ul class="journey" style="margin-top: 0px;">
           <li v-for="item in item2">
-            <a href="">
+            <a href="https://travel.12306.cn/portal/travel/detail/ff80808157df83c201644684cc7c1388">
               <div>
                 <img :src="item.src">
               </div>

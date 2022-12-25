@@ -12,7 +12,7 @@
         </ul>
       </div>
       <div style="float: right;color: #999;font-size: 14px;margin-right: 15px;margin-top:-20px;font-weight: normal">
-        <a href="https://kyfw.12306.cn/otn/zxdt/index_zxdt.html" style="text-decoration: none;color: #999;">更多></a>
+        <a href="https://www.12306.cn/mormhweb/zxdt/index_zxdt.html" target="_blank" style="text-decoration: none;color: #999;">更多></a>
       </div>
     </el-tab-pane >
 
@@ -27,7 +27,7 @@
         </ul>
       </div>
       <div style="float: right;color: #999;font-size: 14px;margin-right: 15px;margin-top:-20px;font-weight: normal">
-        <a href="https://kyfw.12306.cn/otn/gonggao/help.html" style="text-decoration: none;color: #999;">更多></a>
+        <a href="https://kyfw.12306.cn/otn/gonggao/help.html" target="_blank" style="text-decoration: none;color: #999;">更多></a>
       </div>
     </el-tab-pane>
     <el-tab-pane label="信用信息">
@@ -58,7 +58,7 @@
             </div>
           </div>
           <dd class="more">
-            <a href="https://kyfw.12306.cn/otn/queryDishonest/init">更多></a>
+            <a href="https://kyfw.12306.cn/otn/queryDishonest/init" target="_blank">更多></a>
           </dd>
         </dl>
       </div>
