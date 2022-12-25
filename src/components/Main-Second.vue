@@ -34,7 +34,7 @@
           铁路旅游
         </div>
         <div style="float: right">
-          <a href="https://travel.12306.cn/portal/" style="text-decoration: none;color: #999">
+          <a href="https://travel.12306.cn/portal/" style="text-decoration: none;color: #999" target="_blank">
             更多>
           </a>
         </div>
