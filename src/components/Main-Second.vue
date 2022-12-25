@@ -3,12 +3,12 @@
     <div style="margin-left: 160px">
       <ul class="service">
         <li>
-          <a href="https://cx.12306.cn/tlcx/index.html">
+          <a href="https://cx.12306.cn/tlcx/index.html" target="_blank">
             <img src="../assets/abanner/1.png">
           </a>
         </li>
         <li>
-          <a href="https://exservice.12306.cn/excater/index.html">
+          <a href="https://exservice.12306.cn/excater/index.html" target="_blank">
             <img src="../assets/abanner/2.png">
           </a>
         </li>
@@ -16,12 +16,12 @@
       </ul>
       <ul class="service">
         <li>
-          <a href="https://kyfw.12306.cn/otn/view/my_insurance.html">
+          <a href="https://kyfw.12306.cn/otn/view/my_insurance.html" target="_blank">
             <img src="../assets/abanner/3.png">
           </a>
         </li>
         <li>
-          <a href="https://kyfw.12306.cn/otn/view/commutation_index.html">
+          <a href="https://kyfw.12306.cn/otn/view/commutation_index.html" target="_blank">
             <img src="../assets/abanner/4.png">
           </a>
         </li>
@@ -42,7 +42,7 @@
       <div style="height: 508px;width: 1200px">
         <ul class="journey" style="margin-bottom: 0px;margin-top: 0px">
           <li v-for="item in item1">
-            <a href="https://travel.12306.cn/portal/travel/detail/ff80808157df83c201644427880112ae">
+            <a :href="item.url" target="_blank">
               <div>
                 <img :src="item.src">
               </div>
@@ -58,7 +58,7 @@
         </ul>
         <ul class="journey" style="margin-top: 0px;">
           <li v-for="item in item2">
-            <a href="https://travel.12306.cn/portal/travel/detail/ff80808157df83c201644684cc7c1388">
+            <a :href="item.url" target="_blank">
               <div>
                 <img :src="item.src">
               </div>
@@ -86,44 +86,52 @@ export default {
         {
           src: require("..//assets/journey/1.png"),
           title: "”环西部火车游” 高品质旅游版专线列车",
-          money: 2560
+          money: 2560,
+          url: "https://travel.12306.cn/portal/travel/detail/ff80808157df83c201644427880112ae"
         },
         {
           src: require("..//assets/journey/2.png"),
           title: "“环西部火车游” 陇上江南·行摄山>水陇南...",
-          money: 930
+          money: 930,
+          url: "https://travel.12306.cn/portal/travel/detail/ff80808157df83c20164457aed6012db"
         },
         {
           src: require("..//assets/journey/3.png"),
           title: "“环西部火车游”华夏寻根·人文始祖天水两...",
-          money: 980
+          money: 980,
+          url: "https://travel.12306.cn/portal/travel/detail/ff80808157df83c2016445b0fd5f1304"
         },
         {
           src: require("..//assets/journey/4.png"),
           title: "“环西部火车游”精品旅游线路",
-          money: 3380
+          money: 3380,
+          url: "https://travel.12306.cn/portal/travel/detail/ff80808157df83c2016446996d9813a9"
         }
       ],
       item2: [
         {
           src: require("..//assets/journey/5.png"),
           title: "“环西部火车游”美丽甘南三日游",
-          money: 880
+          money: 880,
+          url: "https://travel.12306.cn/portal/travel/detail/ff80808157df83c201644684cc7c1388"
         },
         {
           src: require("..//assets/journey/6.png"),
-          title: "“环西部火车游” 青海湖、茶卡2日>游",
-          money: 880
+          title: "“环西部火车游” 青海湖、茶卡两日游",
+          money: 880,
+          url: "https://travel.12306.cn/portal/travel/detail/ff80808157df83c2016446b4813013c0"
         },
         {
           src: require("..//assets/journey/7.png"),
           title: "“环西部火车游”嘉敦5日游",
-          money: 2260
+          money: 2260,
+          url: "https://travel.12306.cn/portal/travel/detail/ff80808157df83c2016446ba8bc313cd"
         },
         {
           src: require("..//assets/journey/8.png"),
           title: "“环西部火车游” 敦煌一地三日游",
-          money: 1380
+          money: 1380,
+          url: "https://travel.12306.cn/portal/travel/detail/ff80808157df83c2016446d31e1113e5"
         }
       ]
     }
