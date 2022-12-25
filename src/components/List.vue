@@ -14,7 +14,7 @@
       <div style="float: right;color: #999;font-size: 14px;margin-right: 15px;margin-top:-20px;font-weight: normal">
         <a href="https://kyfw.12306.cn/otn/zxdt/index_zxdt.html" style="text-decoration: none;color: #999;">更多></a>
       </div>
-    </el-tab-pane>
+    </el-tab-pane >
 
     <el-tab-pane label="常见问题">
       <div style="padding: 0 20px 20px;display: block">

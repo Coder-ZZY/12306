@@ -6,13 +6,27 @@
     </div>
     <div class = "right">
       <div class = "searchBox">
-        <el-input placeholder="搜索车票、餐饮、常旅客、相关规章" :suffix-icon="Search" v-model="searchText" style="margin-left: 0px">
-        </el-input>
+        <el-autocomplete
+            class="inline-input"
+            style="width: 300px"
+            v-model="state"
+            :fetch-suggestions="querySearch"
+            placeholder="搜索车票、餐饮、常旅客、相关规章"
+            :trigger-on-focus="false"
+            @select="handleSelect"
+        ></el-autocomplete>
+        <el-button type="primary">
+          <el-icon><Search /></el-icon>
+        </el-button>
       </div>
       <div class="other">
         <ul style="list-style-type: none;margin: 0px;padding: 0px">
           <li class="item">
-            <a href="" class="item-nav">爱心模式</a>
+            <a href="" class="item-nav">无障碍</a>
+          </li>
+          <li class="item _item">|</li>
+          <li class="item">
+            <a href="" class="item-nav">爱心版</a>
           </li>
           <li class="item _item">|</li>
           <li class = "item">
@@ -192,11 +206,26 @@
 import { Search } from '@element-plus/icons-vue'
 export default {
   name: "Header",
+  components: {Search},
   data() {
     return {
       Search,
       searchText: "",
-      activeIndex: "1"
+      activeIndex: "1",
+      state: []
+    }
+  },
+  methods: {
+    querySearch(queryString, cb) {
+      this.$axios.get('/search?wd=' + queryString ).then(resp => {
+        if(resp && resp.data.code === 200) {
+          let s = resp.data.result;
+          return cb(s);
+        }
+      })
+    },
+    handleSelect(item) {
+      window.open(item["url"]);
     }
   }
 }
