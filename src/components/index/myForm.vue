@@ -115,7 +115,7 @@
                   </el-checkbox-group></div>
               </el-form-item>
               <el-form-item>
-                <el-button type="warning" style="width:100%" @click="onSubmit(form1.name1, form1.name2)">查询</el-button>
+                <el-button type="warning" style="width:100%" @click="onSubmit(form1.name1, form1.name2, form1.type)">查询</el-button>
               </el-form-item>
             </el-form>
           </div>
@@ -160,7 +160,7 @@
                   </el-checkbox-group></div>
               </el-form-item>
               <el-form-item style="margin-bottom: 10px;">
-                <el-button type="warning" style="width:100%;" @click="onSubmit(form2.name1, form2.name2)">查询</el-button>
+                <el-button type="warning" style="width:100%;" @click="onSubmit(form2.name1, form2.name2, form2.type)">查询</el-button>
               </el-form-item>
             </el-form>
         </div>
@@ -490,9 +490,16 @@ export default {
     }
   },
   methods: {
-    onSubmit(name1, name2) {
+    onSubmit(name1, name2, l) {
+      if(name1=== "" || name2 === "") {
+        alert("出发地或到达地不能为空!")
+        return;
+      }
+      let isQuick = false;
+      if(l.indexOf("高铁/动车") > -1)
+        isQuick = true
       this.dialogTableVisible = true;
-      this.$axios.get('/tickets?startStation=' + name1 + "&endStation=" + name2).then(resp => {
+      this.$axios.get('/tickets?startStation=' + name1 + "&endStation=" + name2 + "&isQuick=" + isQuick).then(resp => {
         if(resp && resp.data.code === 200) {
             this.gridData = resp.data.result;
         }
