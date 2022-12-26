@@ -2,7 +2,7 @@
   <div :width="isCollapse ? '0' : '200px'">
     <el-menu
       class="el-menu-vertical-demo"
-      :style="'position: fixed; right: 0; bottom: 300px; z-index: 99999;display:'+isDisplay"
+      :style="'position: fixed; right: 0; bottom: 300px; z-index: 1;display:'+isDisplay"
       @select="handleSelect"
     >
       <el-menu-item index="1" @click="toNews" id="news">

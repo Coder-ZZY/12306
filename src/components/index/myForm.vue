@@ -344,7 +344,31 @@
       </div>
     </div>
   </div>
+  <el-dialog title="车票查询结果" v-model="dialogTableVisible" width="98%">
+    <el-table :data="gridData">
+      <el-table-column property="train_num" label="车次" width="80"></el-table-column>
+      <el-table-column property="start_station" label="出发站" width="80"></el-table-column>
+      <el-table-column property="end_station" label="到达站" width="80"></el-table-column>
+      <el-table-column property="start_time" label="出发时间" width="80"></el-table-column>
+      <el-table-column property="end_time" label="到达时间" width="80"></el-table-column>
+      <el-table-column property="total_time" label="历时" width="80"></el-table-column>
+      <el-table-column property="arrive" label="何时到达" width="80"></el-table-column>
+      <el-table-column property="principal_seat" label="商务座特等座" width="70"></el-table-column>
+      <el-table-column property="frist_seat" label="一等座" width="80"></el-table-column>
+      <el-table-column property="second_seat" label="二等座" width="80"></el-table-column>
+      <el-table-column property="advanced_sleeper" label="高级软卧" width="80"></el-table-column>
+      <el-table-column property="frist_sleeper" label="软卧一等卧" width="100"></el-table-column>
+      <el-table-column property="dong_sleeper" label="动卧" width="80"></el-table-column>
+      <el-table-column property="second_sleeper" label="硬卧二等卧" width="95"></el-table-column>
+      <el-table-column property="soft_seat" label="软座" width="70"></el-table-column>
+      <el-table-column property="hard_seat" label="硬座" width="70"></el-table-column>
+      <el-table-column property="no_seat" label="无座" width="70"></el-table-column>
+      <el-table-column property="other" label="其他" width="70"></el-table-column>
+    </el-table>
+    <el-button type="primary" @click="dialogTableVisible = false" style="margin-top: 20px">确 定</el-button>
+  </el-dialog>
 </template>
+
 <script>
 export default {
   name: "myForm",
@@ -444,11 +468,17 @@ export default {
           { required: true, message: '请输入目的地', trigger: 'blur' },
         ],
       },
+      gridData: [{
+        end_time:"02:18",
+        other: "--"
+      }],
+      dialogTableVisible: false
     }
   },
   methods: {
     onSubmit() {
       console.log('submit!');
+      this.dialogTableVisible = true
     },
     click(i) {
       this.index = i;
