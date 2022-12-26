@@ -16,7 +16,11 @@ public class TicketsService {
         return ticketsDao.findAll();
     }
 
-    public List<Tickets> listByStation(String startStation, String endStation) {
-        return ticketsDao.findByStation(startStation, endStation);
+    public List<Tickets> listByStation(String startStation, String endStation, boolean isQuick) {
+        String s = "^[A-Z]";
+        if(isQuick) {
+            s = "G|D";
+        }
+        return ticketsDao.findByStation(startStation, endStation, s);
     }
 }

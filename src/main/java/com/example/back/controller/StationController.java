@@ -47,8 +47,9 @@ public class StationController {
     @GetMapping("/api/tickets")
     @ResponseBody
     public Result listTickets(@RequestParam("startStation") String startStation,
-                              @RequestParam("endStation") String endStation) {
-        return ResultFactory.buildSuccessResult(ticketsService.listByStation(startStation, endStation));
+                              @RequestParam("endStation") String endStation,
+                              @RequestParam("isQuick") boolean isQuick) {
+        return ResultFactory.buildSuccessResult(ticketsService.listByStation(startStation, endStation, isQuick));
     }
 
     @GetMapping("/api/search")
