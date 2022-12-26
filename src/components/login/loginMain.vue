@@ -65,30 +65,69 @@
 
           <!--            注册表单-->
           <div  v-show="!isShow" class="registForm">
-            <div style="flex: 1;display: flex;justify-content: center;align-items: center">
+            <div style="flex: 1;display: flex;justify-content: center;align-items: center;margin-bottom: 15px">
               用&nbsp;&nbsp;&nbsp;户&nbsp;&nbsp;&nbsp;名:
               <input
                   placeholder="请输入用户名"
                   v-model="regUser.regUsername"
-                  style="width: 165px;margin-left: 10px"
+                  style="height: 25px;width: 165px;margin-left: 10px"
               />
             </div>
-            <div style="flex: 1;display: flex;justify-content: center;align-items: center">
+<!--            <el-alert-->
+<!--                title="成功提示的文案"-->
+<!--                type="success"-->
+<!--                show-icon>-->
+<!--            </el-alert>-->
+            <div style="flex: 1;display: flex;justify-content: center;align-items: center;margin-bottom: 15px">
               身&nbsp;份&nbsp;证&nbsp;号:
               <input
                   placeholder="请输入身份证号"
                   v-model="regUser.regUserid"
-                  style="width: 165px;margin-left: 10px"
+                  style="height: 25px;width: 165px;margin-left: 10px"
               />
             </div>
-            <div style="flex: 1;display: flex;justify-content: center;align-items: center">
+<!--            <el-alert-->
+<!--                title="成功提示的文案"-->
+<!--                type="success"-->
+<!--                show-icon>-->
+<!--            </el-alert>-->
+            <div style="flex: 1;display: flex;justify-content: center;align-items: center;margin-bottom: 15px">
               密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:
-              <input placeholder="请输入密码" style="width: 165px;margin-left: 10px" v-model="regUser.regPwd" type="password"/>
+              <input placeholder="请输入密码" style="height: 25px;width: 165px;margin-left: 10px" v-model="regUser.regPwd" type="password"/>
             </div>
+<!--            <el-alert-->
+<!--                title="成功提示的文案"-->
+<!--                type="success"-->
+<!--                show-icon>-->
+<!--            </el-alert>-->
             <div style="flex: 1;display: flex;justify-content: center;align-items: center;">
               确&nbsp;认&nbsp;密&nbsp;码:
-              <input placeholder="请再次输入密码" style="width: 165px;margin-left: 10px" v-model="regUser.regRePwd" type="password"/>
+              <input placeholder="请再次输入密码" style="height: 25px;width: 165px;margin-left: 10px;" v-model="regUser.regRePwd" type="password"/>
             </div>
+          <el-alert
+              title="没有问题"
+              v-show="pwdexistempty==false&&pwdmessage==true"
+              type="success"
+              :closable="false"
+              style="margin-top: 10px"
+              show-icon>
+          </el-alert>
+            <el-alert
+                title="两次输入的密码不一致，请重新输入！"
+                v-show="pwdexistempty==false&&pwdmessage==false"
+                type="error"
+                :closable="false"
+                style="margin-top: 10px"
+                show-icon>
+            </el-alert>
+            <el-alert
+                title="请输入密码"
+                v-show="pwdexistempty==true"
+                type="warning"
+                :closable="false"
+                style="margin-top: 10px"
+                show-icon>
+            </el-alert>
           </div>
         </transition>
         <transition
@@ -99,7 +138,7 @@
         >
           <!--            注册按钮-->
           <div  v-show="!isShow" class="registBtn">
-            <el-button type="success" round style="background-color: #257B5E;letter-spacing: 5px" @click="userRegister">注册</el-button>
+            <el-button type="success" round style="margin-bottom: 25px;;background-color: #257B5E;letter-spacing: 5px" @click="userRegister">注册</el-button>
           </div>
         </transition>
       </div>
@@ -182,7 +221,6 @@ export default {
         regUserid:'',
         regRePwd:'',
         regPwd:'',
-        selectValue:"",
       },
       styleObj:{
         bordertoprightradius:'15px',
@@ -191,13 +229,51 @@ export default {
         borderbottomleftradius:'0px',
         rightDis:'0px'
       },
-      isShow:true
+      isShow:true,
+      //用于控制密码提示框显示的内容
+      pwdmessage:false,
+      //用于控制密码提示框是否显示
+      pwdexistempty:true,
     }
   },
-  created() {
-    this.loadInfoOfAdmin();
+  watch: {
+    "regUser":{
+      handler(newValue,oldValue){
+        if(newValue.regPwd.length === 0 || newValue.regRePwd.length === 0){
+          this.pwdexistempty=true;
+        }
+        else if(newValue.regPwd.length !== 0 && newValue.regRePwd.length !== 0){
+          this.pwdexistempty=false;
+          if(newValue.regRePwd !== newValue.regPwd){
+            this.pwdmessage=false;
+          }
+          else{
+            this.pwdmessage=true;
+          }
+        }
+      },
+      deep:true,
+      immediate:true
+  }
   },
   methods:{
+    checkpwd(){
+      //若两个密码都不为空且
+      if(this.regUser.regRePwd.length !== 0 && this.regUser.regPwd !== 0){
+        this.pwdexistempty=false;
+        if(this.regUser.regRePwd === this.regUser.regPwd){
+          //若两个密码一致，则没问题
+          this.pwdmessage=true;
+        }
+        else{
+          //两个密码不一致，显示提示语
+          this.pwdmessage=false;
+        }
+      }
+      else{
+        this.pwdexistempty=true;
+      }
+    },
     changeToRegiest(){
       this.styleObj.bordertoprightradius= '0px'
       this.styleObj.borderbottomrightradius='0px'
@@ -251,68 +327,48 @@ export default {
               }
             })
             .catch(failResponse =>{
-
+              this.$message.error('服务器未启动，请启动服务器！')
             })
       }
     },
-    UserLogin2(){
-       this.request.post("http://localhost:9090/user/login",this.loginUser).then(res=>{
-         if(res.code=="200"){
-           localStorage.setItem("user",JSON.stringify(res.data))
-           this.$message.success("登陆成功！")
-           this.$router.push("/manage")
-         }else if(res.code=="400"){
-           this.$message.warning(res.msg)
-         }else if(res.code=="401"){
-           this.$message.error(res.msg)
-         }
-         else{
-           this.$message.error("用户名或密码错误！")
-         }
-       })
-    },
-    //加载管理员信息
-    loadInfoOfAdmin(){
-      // this.request.get("http://localhost:9090/user/listOfAdmin").then(res=>{
-      //   if(res.code=="200"){
-      //     this.admins=res.data
-      //     return true
-      //   }
-      // })
-    },
     //用户注册
     userRegister(){
-      // if(this.regUser.regUsername===""){
-      //   this.$message.error("用户名不能为空！")
-      //   return false
-      // }else if(this.regUser.regPwd!=this.regUser.regRePwd){
-      //   this.$message.error("两次密码输入不同，请检查后重新注册！")
-      //   return false
-      // }else if(this.regUser.selectValue===""){
-      //   this.$message.error("未选择审核员!")
-      //   return false
-      // }else{
-      //   let user = {};
-      //   user.name = this.regUser.regUsername
-      //   user.password = this.regUser.regPwd
-      //   user.auditor = this.regUser.selectValue
-      //   this.request.post("http://localhost:9090/user/register",user).then(res=>{
-      //     if(res.code==="200"){
-      //       this.$message.success("申请成功，请耐心等待管理员审核！")
-      //       this.regUser={  regUsername:'',
-      //         regRePwd:'',
-      //         regPwd:'',
-      //         selectValue:""}
-      //       this.changeToLogin()
-      //     }
-      //     if(res.code==="400"){
-      //       this.$message.error(res.msg)
-      //       return
-      //     }
-      //   })
-      // }
-
-    }
+      if(this.regUser.regUsername.length === 0||this.regUser.regUserid.length === 0||this.pwdexistempty === true){
+        this.$message.error('当前表单还存在空白信息，请填写后再提交！')
+      }
+      else if(this.regUser.regUserid.length !== 18){
+        this.$message.error('请确认您输入的身份证号码在重新提交！')
+      }
+      else if(this.pwdmessage === false){
+        this.$message.error('两次密码输入不一致，请确认后再提交！')
+      }
+      else {
+        this.$axios
+            .post('/register',{
+              username:this.regUser.regUsername,
+              userid:this.regUser.regUserid,
+              password:this.regUser.regPwd,
+            })
+            .then(successResponse => {
+              if (successResponse.data.code === 200){
+                this.$message({message:'注册成功，即将跳转登录',type:'success'})
+                setTimeout(() => {
+                  location.reload()
+                }, 500);
+              }
+              else{
+                this.regUser.regPwd="";
+                this.regUser.regUserid="";
+                this.regUser.regRePwd="";
+                this.regUser.regUsername="";
+                this.$message.error('输入的身份证号已存在，请检查后输入！')
+              }
+            })
+            .catch(failResponse =>{
+              this.$message.error('服务器未启动，请启动服务器！')
+            })
+      }
+    },
   },
 
 }
@@ -412,6 +468,7 @@ export default {
   flex:1;
   width: 100%;
   display: flex;
+  margin-bottom: 20px;
   justify-content: space-around;
   align-items: center;
 }
@@ -432,6 +489,7 @@ export default {
   flex-direction: column;
   color: #257B5E;
   font-size: 16px;
+  margin-top: 30px;
 }
 
 .registForm input{
@@ -443,9 +501,6 @@ export default {
   border: 1px solid gray;
 }
 .registForm input:focus{
-  border: 2px solid #257B5E;
-}
-#elselect:focus{
   border: 2px solid #257B5E;
 }
 .registBtn{
