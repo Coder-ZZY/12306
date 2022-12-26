@@ -200,7 +200,7 @@
 </template>
 
 <script>
-import 'animate.css';
+// import 'animate.css';
 import { ElMessage } from 'element-plus'
 // eslint-disable-next-line no-unused-vars
 import {Axios as request} from "axios";
@@ -376,6 +376,7 @@ export default {
 
 <style>
 /* @import '../assets/css/Login.css' */
+@import "../../assets/css/animate.css";
 .base{
   height: 100vh;
   display: flex;

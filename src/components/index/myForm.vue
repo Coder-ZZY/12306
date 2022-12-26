@@ -89,10 +89,14 @@
           <div v-show="index==0"  class="tl3_dl">
             <el-form :model="form1" label-width="auto">
               <el-form-item label="出发地">
-                <el-input id="departure" v-model="form1.name1" style="width: 100%" placeholder="简拼/全拼/汉字"/>
+                <el-input id="departure" v-model="form1.name1" style="width: 100%"
+                          placeholder="简拼/全拼/汉字" @focus="v1=true" @blur="wait(1)"/>
+                <SelectCity style="z-index:999;" v-show="v1" v-model:city="form1.name1" v-model:vis="v1"/>
               </el-form-item>
               <el-form-item label="到达地">
-                <el-input id="destination" v-model="form1.name2" style="width: 100%" placeholder="简拼/全拼/汉字"/>
+                <el-input id="destination" v-model="form1.name2" style="width: 100%"
+                          placeholder="简拼/全拼/汉字" @focus="v2=true" @blur="wait(2)"/>
+                <SelectCity style="z-index:999;" v-show="v2" v-model:city="form1.name2" v-model:vis="v2"/>
               </el-form-item>
               <el-form-item label="出发日期">
                 <el-date-picker
@@ -111,7 +115,7 @@
                   </el-checkbox-group></div>
               </el-form-item>
               <el-form-item>
-                <el-button type="warning" style="width:100%" @click="onSubmit">查询</el-button>
+                <el-button type="warning" style="width:100%" @click="onSubmit(form1.name1, form1.name2)">查询</el-button>
               </el-form-item>
             </el-form>
           </div>
@@ -121,10 +125,14 @@
           <div v-show="index==1" class="tl3_dl">
             <el-form :model="form2" label-width="auto">
               <el-form-item style="margin-bottom: 10px;" label="出发地">
-                <el-input id="departure" v-model="form2.name1" style="width: 100%;" placeholder="简拼/全拼/汉字"/>
+                <el-input id="departure" v-model="form2.name1" style="width: 100%;"
+                          placeholder="简拼/全拼/汉字" @focus="v3=true" @blur="wait(3)"/>
+                <SelectCity style="z-index:999;" v-show="v3" v-model:city="form2.name1" v-model:vis="v3"/>
               </el-form-item>
               <el-form-item style="margin-bottom: 10px;" label="到达地">
-                <el-input id="destination" v-model="form2.name2" style="width: 100%" placeholder="简拼/全拼/汉字"/>
+                <el-input id="destination" v-model="form2.name2" style="width: 100%"
+                          placeholder="简拼/全拼/汉字" @focus="v4=true" @blur="wait(4)"/>
+                <SelectCity style="z-index:999;" v-show="v4" v-model:city="form2.name2" v-model:vis="v4"/>
               </el-form-item>
               <el-form-item style="margin-bottom: 10px;" label="出发日期">
                 <el-date-picker
@@ -152,7 +160,7 @@
                   </el-checkbox-group></div>
               </el-form-item>
               <el-form-item style="margin-bottom: 10px;">
-                <el-button type="warning" style="width:100%;" @click="onSubmit">查询</el-button>
+                <el-button type="warning" style="width:100%;" @click="onSubmit(form2.name1, form2.name2)">查询</el-button>
               </el-form-item>
             </el-form>
         </div>
@@ -346,23 +354,23 @@
   </div>
   <el-dialog title="车票查询结果" v-model="dialogTableVisible" width="98%">
     <el-table :data="gridData">
-      <el-table-column property="train_num" label="车次" width="80"></el-table-column>
-      <el-table-column property="start_station" label="出发站" width="80"></el-table-column>
-      <el-table-column property="end_station" label="到达站" width="80"></el-table-column>
-      <el-table-column property="start_time" label="出发时间" width="80"></el-table-column>
-      <el-table-column property="end_time" label="到达时间" width="80"></el-table-column>
-      <el-table-column property="total_time" label="历时" width="80"></el-table-column>
+      <el-table-column property="trainNum" label="车次" width="80"></el-table-column>
+      <el-table-column property="startStation" label="出发站" width="80"></el-table-column>
+      <el-table-column property="endStation" label="到达站" width="80"></el-table-column>
+      <el-table-column property="startTime" label="出发时间" width="80"></el-table-column>
+      <el-table-column property="endTime" label="到达时间" width="80"></el-table-column>
+      <el-table-column property="totalTime" label="历时" width="80"></el-table-column>
       <el-table-column property="arrive" label="何时到达" width="80"></el-table-column>
-      <el-table-column property="principal_seat" label="商务座特等座" width="70"></el-table-column>
-      <el-table-column property="frist_seat" label="一等座" width="80"></el-table-column>
-      <el-table-column property="second_seat" label="二等座" width="80"></el-table-column>
-      <el-table-column property="advanced_sleeper" label="高级软卧" width="80"></el-table-column>
-      <el-table-column property="frist_sleeper" label="软卧一等卧" width="100"></el-table-column>
-      <el-table-column property="dong_sleeper" label="动卧" width="80"></el-table-column>
-      <el-table-column property="second_sleeper" label="硬卧二等卧" width="95"></el-table-column>
-      <el-table-column property="soft_seat" label="软座" width="70"></el-table-column>
-      <el-table-column property="hard_seat" label="硬座" width="70"></el-table-column>
-      <el-table-column property="no_seat" label="无座" width="70"></el-table-column>
+      <el-table-column property="principalSeat" label="商务座特等座" width="70"></el-table-column>
+      <el-table-column property="fristSeat" label="一等座" width="80"></el-table-column>
+      <el-table-column property="secondSeat" label="二等座" width="80"></el-table-column>
+      <el-table-column property="advancedSleeper" label="高级软卧" width="80"></el-table-column>
+      <el-table-column property="fristSleeper" label="软卧一等卧" width="100"></el-table-column>
+      <el-table-column property="dongSleeper" label="动卧" width="80"></el-table-column>
+      <el-table-column property="secondSleeper" label="硬卧二等卧" width="95"></el-table-column>
+      <el-table-column property="softSeat" label="软座" width="70"></el-table-column>
+      <el-table-column property="hardSeat" label="硬座" width="70"></el-table-column>
+      <el-table-column property="noSeat" label="无座" width="70"></el-table-column>
       <el-table-column property="other" label="其他" width="70"></el-table-column>
     </el-table>
     <el-button type="primary" @click="dialogTableVisible = false" style="margin-top: 20px">确 定</el-button>
@@ -370,8 +378,10 @@
 </template>
 
 <script>
+import SelectCity from "@/components/index/SelectCity"
 export default {
   name: "myForm",
+  components: {SelectCity},
   mounted() {
     let that = this
     that.getCurrentTime()
@@ -379,6 +389,10 @@ export default {
   data() {
     return {
       index:0,
+      v1: false,
+      v2: false,
+      v3: false,
+      v4: false,
       form1: {
         name1: '',
         name2: '',
@@ -476,9 +490,33 @@ export default {
     }
   },
   methods: {
-    onSubmit() {
-      console.log('submit!');
-      this.dialogTableVisible = true
+    onSubmit(name1, name2) {
+      this.dialogTableVisible = true;
+      this.$axios.get('/tickets?startStation=' + name1 + "&endStation=" + name2).then(resp => {
+        if(resp && resp.data.code === 200) {
+            this.gridData = resp.data.result;
+        }
+      })
+    },
+    wait(k) {
+      const _this = this
+      if(k===1) {
+        setTimeout(function () {
+          _this.v1 = false
+        },100)
+      } else if(k===2) {
+        setTimeout(function () {
+          _this.v2 = false
+        },100)
+      } else if(k===3) {
+        setTimeout(function () {
+          _this.v3 = false
+        },100)
+      } else if(k===4) {
+        setTimeout(function () {
+          _this.v4 = false
+        },100)
+      }
     },
     click(i) {
       this.index = i;
