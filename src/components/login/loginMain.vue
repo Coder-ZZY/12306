@@ -337,7 +337,7 @@ export default {
         this.$message.error('当前表单还存在空白信息，请填写后再提交！')
       }
       else if(this.regUser.regUserid.length !== 18){
-        this.$message.error('请确认您输入的身份证号码在重新提交！')
+        this.$message.error('您输入的身份证号不合法，请确认后再重新提交！')
       }
       else if(this.pwdmessage === false){
         this.$message.error('两次密码输入不一致，请确认后再提交！')
