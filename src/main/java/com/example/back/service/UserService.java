@@ -18,7 +18,7 @@ public class UserService {
         return userDao.findByUsername(username);
     }
     public User getByUserId(String userid){
-        return userDao.findByUserId(userid);
+        return userDao.findByUserid(userid);
     }
 
     public User get(String username, String password){

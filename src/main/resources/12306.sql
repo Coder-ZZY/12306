@@ -140,4 +140,4 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'admin', '123','340123200211190030');
+INSERT INTO `user` VALUES ('1', 'admin', '123','340123200210011234');
