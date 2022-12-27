@@ -353,7 +353,7 @@
     </div>
   </div>
   <el-dialog title="车票查询结果" v-model="dialogTableVisible" width="98%">
-    <el-table :data="gridData">
+    <el-table :data="gridData.slice((currentPage - 1) * pagesize, currentPage * pagesize)">
       <el-table-column property="trainNum" label="车次" width="80"></el-table-column>
       <el-table-column property="startStation" label="出发站" width="80"></el-table-column>
       <el-table-column property="endStation" label="到达站" width="80"></el-table-column>
@@ -373,6 +373,15 @@
       <el-table-column property="noSeat" label="无座" width="70"></el-table-column>
       <el-table-column property="other" label="其他" width="70"></el-table-column>
     </el-table>
+    <el-pagination
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        :current-page="currentPage"
+        :page-sizes="[5, 10, 15, 20]"
+        :page-size="pagesize"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="gridData.length">
+    </el-pagination>
     <el-button type="primary" @click="dialogTableVisible = false" style="margin-top: 20px">确 定</el-button>
   </el-dialog>
 </template>
@@ -482,6 +491,8 @@ export default {
           { required: true, message: '请输入目的地', trigger: 'blur' },
         ],
       },
+      currentPage: 1, //初始页
+      pagesize: 5, //    每页的数据
       gridData: [{
         end_time:"02:18",
         other: "--"
@@ -504,6 +515,16 @@ export default {
           this.gridData = resp.data.result;
         }
       })
+    },
+    handleSizeChange (size) {
+      console.log(size,'size');
+      this.pagesize = size;
+      console.log(this.pagesize); //每页下拉显示数据
+    },
+    handleCurrentChange (currentPage) {
+      console.log(currentPage,'currentPage');
+      this.currentPage = currentPage;
+      console.log(this.currentPage); //点击第几页
     },
     wait(k) {
       const _this = this
