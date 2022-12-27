@@ -541,6 +541,9 @@ export default {
         window.location.href =
             "https://kyfw.12306.cn/otn/lcQuery/init?linktypeid=lx&fs=" + name1 + "," + cityCode1 + "&ts=" + name2 + "," + cityCode2 + "&date=" + this.ruleForm1.date + "&flag=N,N,Y";
       }
+      else{
+        window.open("https://kyfw.12306.cn/otn/lcQuery/init?linktypeid=lx&fs=" + name1 + "&ts=" + name2  + "&date=" + this.ruleForm1.date + "&flag=N,N,Y");
+      }
     },
     train_order(date1, date2, searchType) {
       if (searchType == "订票日期") {
