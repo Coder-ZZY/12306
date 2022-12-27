@@ -5,7 +5,7 @@
         <h2 class="foot-con-tit">友情链接</h2>
         <ul class="foot-links-list" role="menubar">
           <li role="menuitem" class="left">
-            <a title="中国国家铁路集团有限公司" href="javascript:;">
+            <a title="中国国家铁路集团有限公司" href="http://www.china-railway.com.cn/">
               <img
                 src="@/assets/footer/link05.png"
                 alt="中国国家铁路集团有限公司"
@@ -16,7 +16,7 @@
             role="menuitem"
             class="left"
           >
-            <a title="中国铁路财产保险自保有限公司" href="javascript:;">
+            <a title="中国铁路财产保险自保有限公司" href="https://www.china-ric.com/index.jhtml?">
               <img
                 src="@/assets/footer/link02.png"
                 alt="中国铁路财产保险自保有限公司"
@@ -27,7 +27,7 @@
             class="left"
             role="menuitem"
           >
-            <a title="中国铁路95306网" href="javascript:;">
+            <a title="中国铁路95306网" href="http://www.95306.cn/">
               <img
                 src="@/assets/footer/link03.png"
                 alt="中国铁路95306网"
