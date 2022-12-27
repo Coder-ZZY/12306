@@ -4,79 +4,79 @@
       <div class="tl3_2">
         <ul class="tl3_cp">
           <li @click="click(0)" :class="index>=0&&index<=3 ? 'cp':''">
-              <a href="#" :class="index>=0&&index<=3 ? 'ys':''">
-                <font-awesome-icon icon="fa-solid fa-train" />
+            <a href="#" :class="index>=0&&index<=3 ? 'ys':''">
+              <font-awesome-icon icon="fa-solid fa-train" />
               车票</a>
           </li>
           <li @click="click(4)" :class="index>=4&&index<=7 ? 'cp':''">
-              <a href="#" :class="index>=4&&index<=7 ? 'ys':''">
-                <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
+            <a href="#" :class="index>=4&&index<=7 ? 'ys':''">
+              <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
               常用查询</a>
           </li>
           <li @click="click(8)" :class="index>=8&&index<=9 ? 'cp':''">
-               <a href="#" :class="index>=8&&index<=9 ? 'ys':''">
-                 <font-awesome-icon icon="fa-solid fa-bell-concierge" />
+            <a href="#" :class="index>=8&&index<=9 ? 'ys':''">
+              <font-awesome-icon icon="fa-solid fa-bell-concierge" />
               订餐</a>
           </li>
         </ul>
         <!--车票选项卡下的功能-->
         <div>
-        <ul v-show="index==0||index==1||index==2||index==3" style="margin-top: -330px" class="tl3_cpxx">
-          <li @click="click(0)" :class="index==0 ? 'xhx':''">
-            <a href="#" :class="index==0 ? 'tgq':''">
-              <font-awesome-icon icon="fa-solid fa-right-long"></font-awesome-icon>
-              单程</a>
+          <ul v-show="index==0||index==1||index==2||index==3" style="margin-top: -330px" class="tl3_cpxx">
+            <li @click="click(0)" :class="index==0 ? 'xhx':''">
+              <a href="#" :class="index==0 ? 'tgq':''">
+                <font-awesome-icon icon="fa-solid fa-right-long"></font-awesome-icon>
+                单程</a>
+            </li>
+            <li @click="click(1)" :class="index==1 ? 'xhx':''">
+              <a href="#" :class="index==1 ? 'tgq':''">
+                <font-awesome-icon icon="fa-solid fa-right-left" />
+                往返</a>
+            </li>
+            <li @click="click(2)" :class="index==2 ? 'xhx':''">
+              <a href="#" :class="index==2 ? 'tgq':''">
+                <font-awesome-icon icon="fa-solid fa-retweet" />
+                中转换乘
+              </a>
+            </li>
+            <li @click="click(3)" :class="index==3 ? 'xhx':''">
+              <a href="#" :class="index==3 ? 'tgq':''">
+                <font-awesome-icon icon="fa-solid fa-pen-to-square" />
+                退改签
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!-- 常用查询选下卡下的功能-->
+        <ul v-show="index==4||index==5||index==6||index==7" style="margin-top: -330px" class="tl3_cpxx">
+          <li @click="click(4)" :class="index==4 ? 'xhx':''">
+            <a href="#" :class="index==4 ? 'tgq':''">
+              <font-awesome-icon icon="fa-solid fa-clock" />
+              正晚点</a>
           </li>
-          <li @click="click(1)" :class="index==1 ? 'xhx':''">
-            <a href="#" :class="index==1 ? 'tgq':''">
-              <font-awesome-icon icon="fa-solid fa-right-left" />
-              往返</a>
+          <li @click="click(5)" :class="index==5 ? 'xhx':''">
+            <a href="#" :class="index==5 ? 'tgq':''">
+              <font-awesome-icon icon="fa-solid fa-check-to-slot" />
+              检票口</a>
           </li>
-          <li @click="click(2)" :class="index==2 ? 'xhx':''">
-            <a href="#" :class="index==2 ? 'tgq':''">
-              <font-awesome-icon icon="fa-solid fa-retweet" />
-              中转换乘
+          <li @click="click(6)" :class="index==6 ? 'xhx':''">
+            <a href="#" :class="index==6 ? 'tgq':''">
+              <font-awesome-icon icon="fa-solid fa-hourglass-start" />
+              起售时间
             </a>
           </li>
-          <li @click="click(3)" :class="index==3 ? 'xhx':''">
-             <a href="#" :class="index==3 ? 'tgq':''">
-               <font-awesome-icon icon="fa-solid fa-pen-to-square" />
-              退改签
-             </a>
+          <li @click="click(7)" :class="index==7 ? 'xhx':''">
+            <a href="#" :class="index==7 ? 'tgq':''">
+              <font-awesome-icon icon="fa-solid fa-cloud-sun"></font-awesome-icon>
+              天气查询
+            </a>
           </li>
         </ul>
-        </div>
-         <!-- 常用查询选下卡下的功能-->
-         <ul v-show="index==4||index==5||index==6||index==7" style="margin-top: -330px" class="tl3_cpxx">
-           <li @click="click(4)" :class="index==4 ? 'xhx':''">
-             <a href="#" :class="index==4 ? 'tgq':''">
-               <font-awesome-icon icon="fa-solid fa-clock" />
-               正晚点</a>
-           </li>
-           <li @click="click(5)" :class="index==5 ? 'xhx':''">
-             <a href="#" :class="index==5 ? 'tgq':''">
-               <font-awesome-icon icon="fa-solid fa-check-to-slot" />
-               检票口</a>
-           </li>
-           <li @click="click(6)" :class="index==6 ? 'xhx':''">
-             <a href="#" :class="index==6 ? 'tgq':''">
-               <font-awesome-icon icon="fa-solid fa-hourglass-start" />
-               起售时间
-             </a>
-           </li>
-           <li @click="click(7)" :class="index==7 ? 'xhx':''">
-             <a href="#" :class="index==7 ? 'tgq':''">
-               <font-awesome-icon icon="fa-solid fa-cloud-sun"></font-awesome-icon>
-               天气查询
-             </a>
-           </li>
-         </ul>
         <!-- 订餐选下卡下的功能-->
         <ul v-show="index==8||index==9" style="margin-top: -330px" class="tl3_cpxx">
           <li @click="click(8)" style="width:45%" :class="index==8 ? 'xhx':''">
             <a href="#" :class="index==8 ? 'tgq':''">
               <font-awesome-icon icon="fa-solid fa-clock-rotate-left" />
-                 预订</a>
+              预订</a>
           </li>
           <li @click="click(9)" style="width: 45%" :class="index==9 ? 'xhx':''">
             <a href="#" :class="index==9 ? 'tgq':''">
@@ -163,40 +163,40 @@
                 <el-button type="warning" style="width:100%;" @click="onSubmit(form2.name1, form2.name2, form2.type)">查询</el-button>
               </el-form-item>
             </el-form>
-        </div>
+          </div>
         </transition>
         <!--   中转换乘    -->
         <transition name="el-fade-in">
-        <div v-show="index==2" class="tl3_dl">
-          <transition name="el-fade-in">
-          <el-form :model="ruleForm1" :rules="rules1" ref="ruleForm1" label-width="auto">
-            <el-form-item label="出发地" prop="name1">
-              <el-input id="departure" v-model="ruleForm1.name1" style="width: 100%;" placeholder="简拼/全拼/汉字"/>
-            </el-form-item>
-            <el-form-item label="到达地" prop="name2">
-              <el-input id="destination" v-model="ruleForm1.name2" style="width: 100%" placeholder="简拼/全拼/汉字"/>
-            </el-form-item>
-            <el-form-item label="乘车日期" prop="date">
-              <el-date-picker
-                  v-model="ruleForm1.date"
-                  type="date"
-                  placeholder="选择日期"
-                  value-format="YYYY-MM-DD"
-                  :disabled-date="disabledDate1"
-              />
-            </el-form-item>
-            <el-form-item >
-              <div style="margin-left: 70px;">
-                <el-checkbox-group v-model="ruleForm1.type">
-                  <el-checkbox label="学生" name="type" />
-                </el-checkbox-group></div>
-            </el-form-item>
-            <el-form-item>
-              <el-button type="warning" style="width:100%;" @click="submitForm('ruleForm1')">查询</el-button>
-            </el-form-item>
-          </el-form>
-          </transition>
-        </div>
+          <div v-show="index==2" class="tl3_dl">
+            <transition name="el-fade-in">
+              <el-form :model="ruleForm1" :rules="rules1" ref="ruleForm1" label-width="auto">
+                <el-form-item label="出发地" prop="name1">
+                  <el-input id="departure" v-model="ruleForm1.name1" style="width: 100%;" placeholder="简拼/全拼/汉字"/>
+                </el-form-item>
+                <el-form-item label="到达地" prop="name2">
+                  <el-input id="destination" v-model="ruleForm1.name2" style="width: 100%" placeholder="简拼/全拼/汉字"/>
+                </el-form-item>
+                <el-form-item label="乘车日期" prop="date">
+                  <el-date-picker
+                      v-model="ruleForm1.date"
+                      type="date"
+                      placeholder="选择日期"
+                      value-format="YYYY-MM-DD"
+                      :disabled-date="disabledDate1"
+                  />
+                </el-form-item>
+                <el-form-item >
+                  <div style="margin-left: 70px;">
+                    <el-checkbox-group v-model="ruleForm1.type">
+                      <el-checkbox label="学生" name="type" />
+                    </el-checkbox-group></div>
+                </el-form-item>
+                <el-form-item>
+                  <el-button type="warning" style="width:100%;" @click="kyfw(ruleForm1.name1, ruleForm1.name2)">查询</el-button>
+                </el-form-item>
+              </el-form>
+            </transition>
+          </div>
         </transition>
         <!--   退改签    -->
         <transition name="el-fade-in">
@@ -231,13 +231,13 @@
                   <el-input id="keyword" v-model="ruleForm2.keyword" style="width: 100%;" placeholder="订单号/车次/乘客姓名"/>
                 </el-form-item>
                 <el-form-item>
-                  <el-button type="warning" style="width:100%;" @click="submitForm('ruleForm2')">查询</el-button>
+                  <el-button type="warning" style="width:100%;" @click="train_order(ruleForm2.date1, ruleForm2.date2, ruleForm2.searchType)">查询</el-button>
                 </el-form-item>
               </el-form>
             </transition>
           </div>
         </transition>
-       <!-- 正晚点 -->
+        <!-- 正晚点 -->
         <transition name="el-fade-in">
           <div v-show="index==4" class="tl3_dl">
             <transition name="el-fade-in">
@@ -255,7 +255,7 @@
                   <el-input id="station" v-model="form3.trains" style="width: 230px;" placeholder="请输入车次"/>
                 </el-form-item>
                 <el-form-item>
-                  <el-button type="warning" style="width:100%;" @click="onSubmit">查询</el-button>
+                  <el-button type="warning" style="width:100%;" @click="zwd(form3.station, form3.trains,form3.searchType)">查询</el-button>
                 </el-form-item>
               </el-form>
             </transition>
@@ -282,7 +282,7 @@
                   <el-input id="departure" v-model="ruleForm3.name2" style="width: 100%;" placeholder="请输入乘车站"/>
                 </el-form-item>
                 <el-form-item>
-                  <el-button type="warning" style="width:100%;" @click="submitForm('ruleForm3')">查询</el-button>
+                  <el-button type="warning" style="width:100%;" @click="jpk()">查询</el-button>
                 </el-form-item>
               </el-form>
             </transition>
@@ -306,7 +306,7 @@
                   <el-input id="departure" v-model="ruleForm4.station" style="width: 100%;" placeholder="简拼/全拼/汉字"/>
                 </el-form-item>
                 <el-form-item>
-                  <el-button type="warning" style="width:100%;" @click="submitForm('ruleForm4')">查询</el-button>
+                  <el-button type="warning" style="width:100%;" @click="qssj(ruleForm4.station, ruleForm4.date)">查询</el-button>
                 </el-form-item>
               </el-form>
             </transition>
@@ -344,7 +344,7 @@
                 <el-input id="departure" v-model="form4.departure" style="width: 100%;" placeholder="仅支持G、D字头的动车组列车"/>
               </el-form-item>
               <el-form-item>
-                <el-button type="warning" style="width:100%;" @click="onSubmit">查询</el-button>
+                <el-button type="warning" style="width:100%;" @click="yd()">查询</el-button>
               </el-form-item>
             </el-form>
           </div>
@@ -353,7 +353,7 @@
     </div>
   </div>
   <el-dialog title="车票查询结果" v-model="dialogTableVisible" width="98%">
-    <el-table :data="gridData.slice((currentPage - 1) * pagesize, currentPage * pagesize)">
+    <el-table :data="gridData">
       <el-table-column property="trainNum" label="车次" width="80"></el-table-column>
       <el-table-column property="startStation" label="出发站" width="80"></el-table-column>
       <el-table-column property="endStation" label="到达站" width="80"></el-table-column>
@@ -373,15 +373,6 @@
       <el-table-column property="noSeat" label="无座" width="70"></el-table-column>
       <el-table-column property="other" label="其他" width="70"></el-table-column>
     </el-table>
-    <el-pagination
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page="currentPage"
-        :page-sizes="[5, 10, 15, 20]"
-        :page-size="pagesize"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="gridData.length">
-    </el-pagination>
     <el-button type="primary" @click="dialogTableVisible = false" style="margin-top: 20px">确 定</el-button>
   </el-dialog>
 </template>
@@ -491,8 +482,6 @@ export default {
           { required: true, message: '请输入目的地', trigger: 'blur' },
         ],
       },
-      currentPage: 1, //初始页
-      pagesize: 5, //    每页的数据
       gridData: [{
         end_time:"02:18",
         other: "--"
@@ -512,20 +501,9 @@ export default {
       this.dialogTableVisible = true;
       this.$axios.get('/tickets?startStation=' + name1 + "&endStation=" + name2 + "&isQuick=" + isQuick).then(resp => {
         if(resp && resp.data.code === 200) {
-            this.gridData = resp.data.result;
+          this.gridData = resp.data.result;
         }
       })
-    },
-    // 初始页currentPage、初始每页数据数pagesize和数据data
-    handleSizeChange (size) {
-      console.log(size,'size');
-      this.pagesize = size;
-      console.log(this.pagesize); //每页下拉显示数据
-    },
-    handleCurrentChange (currentPage) {
-      console.log(currentPage,'currentPage');
-      this.currentPage = currentPage;
-      console.log(this.currentPage); //点击第几页
     },
     wait(k) {
       const _this = this
@@ -550,35 +528,91 @@ export default {
     click(i) {
       this.index = i;
     },
+    kyfw(name1, name2) {
+      let cityCode1, cityCode2;
+      if (this.ruleForm1.name1 == "北京" && this.ruleForm1.name2 == "上海") {
+        cityCode1 = 'BJP';
+        cityCode2 = "SHH"
+        window.location.href =
+            "https://kyfw.12306.cn/otn/lcQuery/init?linktypeid=lx&fs=" + name1 + "," + cityCode1 + "&ts=" + name2 + "," + cityCode2 + "&date=" + this.ruleForm1.date + "&flag=N,N,Y";
+      } else if (this.ruleForm1.name1 == "上海" && this.ruleForm1.name2 == "北京") {
+        cityCode1 = 'SHH';
+        cityCode2 = "BJP"
+        window.location.href =
+            "https://kyfw.12306.cn/otn/lcQuery/init?linktypeid=lx&fs=" + name1 + "," + cityCode1 + "&ts=" + name2 + "," + cityCode2 + "&date=" + this.ruleForm1.date + "&flag=N,N,Y";
+      }
+    },
+    train_order(date1, date2, searchType) {
+      if (searchType == "订票日期") {
+        window.location.href =
+            "https://kyfw.12306.cn/otn/view/train_order.html?type=2&query_type=" + 1 + "&begin_date=" + date1 + "&end_date=" + date2 + "&sequence_no=";
+      } else if (searchType == "乘车日期") {
+        window.location.href =
+            "https://kyfw.12306.cn/otn/view/train_order.html?type=2&query_type=" + 2 + "&begin_date=" + date1 + "&end_date=" + date2 + "&sequence_no=";
+      }
+    },
+    zwd(station, trains, searchType) {
+      let station_code
+      if (searchType == "出发站") {
+        if (station == '北京') {
+          station_code = 'BJP'
+          window.location.href =
+              "https://kyfw.12306.cn/otn/zwdch/init?cc="+ trains + "&cxlx=0&station_name=" + station + "&station_code=" + station_code;
+        }
+      } else if (searchType == "到达站") {
+        if (station == '北京') {
+          station_code = 'BJP'
+          window.location.href =
+              "https://kyfw.12306.cn/otn/zwdch/init?cc="+ trains + "&cxlx=1&station_name=" + station + "&station_code=" + station_code;
+        }
+      }
+    },
+    jpk() {
+      if (this.ruleForm3.name1 == "Z2") {
+        window.location.href =
+            "https://www.12306.cn/index/view/infos/ticket_check.html?isremoveStore=1";
+      }
+    },
+    qssj(station, date) {
+      let city;
+      if (this.ruleForm4.station == "北京") {
+        city = 'BJP';
+        window.location.href =
+            "https://www.12306.cn/index/view/infos/sale_time.html?station_name=" + station + "&station_code=" + city + "&trainDate=" + date;
+      } else if (this.ruleForm4.station == "上海") {
+        city = 'SHH';
+        window.location.href =
+            "https://www.12306.cn/index/view/infos/sale_time.html?station_name=" + station + "&station_code=" + city + "&trainDate=" + date;
+      } else if (this.ruleForm4.station == "郑州") {
+        city = 'ZZF';
+        window.location.href =
+            "https://www.12306.cn/index/view/infos/sale_time.html?station_name=" + station + "&station_code=" + city + "&trainDate=" + date;
+      }
+    },
     jump (){
       let weatherid;
-       if(this.ruleForm5.weather == "北京"){
-         weatherid='101010100';
-         window.open('http://www.weather.com.cn/weather/'+weatherid+'.shtml');
-       }
-       else if(this.ruleForm5.weather == "上海"){
-         weatherid='101020100';
-         window.open('http://www.weather.com.cn/weather/'+weatherid+'.shtml');
-       }
-       else if(this.ruleForm5.weather == "合肥"){
-         weatherid='101220101';
-         window.open('http://www.weather.com.cn/weather/'+weatherid+'.shtml');
-       }
-       else if(this.ruleForm5.weather == "郑州"){
-         weatherid='101180101';
-         window.open('http://www.weather.com.cn/weather/'+weatherid+'.shtml');
-       }
-       else
-       {alert("没有输入城市的天气，请检查后重试！")}
+      if(this.ruleForm5.weather == "北京"){
+        weatherid='101010100';
+        window.open('http://www.weather.com.cn/weather/'+weatherid+'.shtml');
+      }
+      else if(this.ruleForm5.weather == "上海"){
+        weatherid='101020100';
+        window.open('http://www.weather.com.cn/weather/'+weatherid+'.shtml');
+      }
+      else if(this.ruleForm5.weather == "合肥"){
+        weatherid='101220101';
+        window.open('http://www.weather.com.cn/weather/'+weatherid+'.shtml');
+      }
+      else if(this.ruleForm5.weather == "郑州"){
+        weatherid='101180101';
+        window.open('http://www.weather.com.cn/weather/'+weatherid+'.shtml');
+      }
+      else
+      {alert("没有输入城市的天气，请检查后重试！")}
     },
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-        } else {
-          console.log('error submit!!');
-          return false;
-        }
-      });
+    yd() {
+      window.location.href =
+          "https://exservice.12306.cn/excater/list.html?date=" + this.form4.date + "&code=" + this.form4.departure;
     },
     // 获取日期
     handleHistoryData(val) {
@@ -616,6 +650,5 @@ export default {
 @import "../../assets/css";
 @import "../../assets/css/reset.css";
 .el-form-item{
-
 }
 </style>
