@@ -1,6 +1,9 @@
 package com.example.back.controller;
 
+import com.example.back.pojo.Tickets;
 import com.example.back.result.Result;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import com.example.back.result.ResultFactory;
 import com.example.back.service.CommonQuestionsService;
 import com.example.back.service.ExecutorListService;
@@ -8,10 +11,10 @@ import com.example.back.service.RecentPostsService;
 import com.example.back.service.TicketsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.util.List;
 import java.util.Map;
 
@@ -48,8 +51,14 @@ public class StationController {
     @ResponseBody
     public Result listTickets(@RequestParam("startStation") String startStation,
                               @RequestParam("endStation") String endStation,
-                              @RequestParam("isQuick") boolean isQuick) {
-        return ResultFactory.buildSuccessResult(ticketsService.listByStation(startStation, endStation, isQuick));
+                              @RequestParam("isQuick") boolean isQuick
+//                              @RequestParam("pageNum") int pageNum,
+//                              @RequestParam("pageSize") int pageSize
+                              ) {
+        List<Tickets> tickets = ticketsService.listByStation(startStation, endStation, isQuick);
+//        Page<Tickets> tickets = ticketsService.listByStationAndPage(pageNum,pageSize,startStation, endStation, isQuick);
+//        return ResultFactory.buildSuccessResult(tickets);
+           return ResultFactory.buildSuccessResult(ticketsService.listByStation(startStation, endStation, isQuick));
     }
 
     @GetMapping("/api/search")
