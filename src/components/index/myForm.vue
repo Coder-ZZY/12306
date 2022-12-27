@@ -192,7 +192,7 @@
                 </el-checkbox-group></div>
             </el-form-item>
             <el-form-item>
-              <el-button type="warning" style="width:100%;" @click="kyfw(ruleForm1.name1, ruleForm1.name2)">查询</el-button>
+              <el-button type="warning" style="width:100%;" @click="submitForm('ruleForm1')">查询</el-button>
             </el-form-item>
           </el-form>
           </transition>
@@ -231,7 +231,7 @@
                   <el-input id="keyword" v-model="ruleForm2.keyword" style="width: 100%;" placeholder="订单号/车次/乘客姓名"/>
                 </el-form-item>
                 <el-form-item>
-                  <el-button type="warning" style="width:100%;" @click="train_order(ruleForm2.date1, ruleForm2.date2, ruleForm2.searchType)">查询</el-button>
+                  <el-button type="warning" style="width:100%;" @click="submitForm('ruleForm2')">查询</el-button>
                 </el-form-item>
               </el-form>
             </transition>
@@ -255,7 +255,7 @@
                   <el-input id="station" v-model="form3.trains" style="width: 230px;" placeholder="请输入车次"/>
                 </el-form-item>
                 <el-form-item>
-                  <el-button type="warning" style="width:100%;" @click="zwd(form3.station, form3.trains,form3.searchType)">查询</el-button>
+                  <el-button type="warning" style="width:100%;" @click="onSubmit">查询</el-button>
                 </el-form-item>
               </el-form>
             </transition>
@@ -282,7 +282,7 @@
                   <el-input id="departure" v-model="ruleForm3.name2" style="width: 100%;" placeholder="请输入乘车站"/>
                 </el-form-item>
                 <el-form-item>
-                  <el-button type="warning" style="width:100%;" @click="jpk()">查询</el-button>
+                  <el-button type="warning" style="width:100%;" @click="submitForm('ruleForm3')">查询</el-button>
                 </el-form-item>
               </el-form>
             </transition>
@@ -306,7 +306,7 @@
                   <el-input id="departure" v-model="ruleForm4.station" style="width: 100%;" placeholder="简拼/全拼/汉字"/>
                 </el-form-item>
                 <el-form-item>
-                  <el-button type="warning" style="width:100%;" @click="qssj(ruleForm4.station, ruleForm4.date)">查询</el-button>
+                  <el-button type="warning" style="width:100%;" @click="submitForm('ruleForm4')">查询</el-button>
                 </el-form-item>
               </el-form>
             </transition>
@@ -344,7 +344,7 @@
                 <el-input id="departure" v-model="form4.departure" style="width: 100%;" placeholder="仅支持G、D字头的动车组列车"/>
               </el-form-item>
               <el-form-item>
-                <el-button type="warning" style="width:100%;" @click="yd()">查询</el-button>
+                <el-button type="warning" style="width:100%;" @click="onSubmit">查询</el-button>
               </el-form-item>
             </el-form>
           </div>
@@ -528,67 +528,6 @@ export default {
     click(i) {
       this.index = i;
     },
-    kyfw(name1, name2) {
-      let cityCode1, cityCode2;
-      if (this.ruleForm1.name1 == "北京" && this.ruleForm1.name2 == "上海") {
-        cityCode1 = 'BJP';
-        cityCode2 = "SHH"
-        window.location.href =
-            "https://kyfw.12306.cn/otn/lcQuery/init?linktypeid=lx&fs=" + name1 + "," + cityCode1 + "&ts=" + name2 + "," + cityCode2 + "&date=" + this.ruleForm1.date + "&flag=N,N,Y";
-      } else if (this.ruleForm1.name1 == "上海" && this.ruleForm1.name2 == "北京") {
-        cityCode1 = 'SHH';
-        cityCode2 = "BJP"
-        window.location.href =
-            "https://kyfw.12306.cn/otn/lcQuery/init?linktypeid=lx&fs=" + name1 + "," + cityCode1 + "&ts=" + name2 + "," + cityCode2 + "&date=" + this.ruleForm1.date + "&flag=N,N,Y";
-      }
-    },
-    train_order(date1, date2, searchType) {
-      if (searchType == "订票日期") {
-        window.location.href =
-            "https://kyfw.12306.cn/otn/view/train_order.html?type=2&query_type=" + 1 + "&begin_date=" + date1 + "&end_date=" + date2 + "&sequence_no=";
-      } else if (searchType == "乘车日期") {
-        window.location.href =
-            "https://kyfw.12306.cn/otn/view/train_order.html?type=2&query_type=" + 2 + "&begin_date=" + date1 + "&end_date=" + date2 + "&sequence_no=";
-      }
-    },
-    zwd(station, trains, searchType) {
-      let station_code
-      if (searchType == "出发站") {
-        if (station == '北京') {
-          station_code = 'BJP'
-          window.location.href =
-              "https://kyfw.12306.cn/otn/zwdch/init?cc="+ trains + "&cxlx=0&station_name=" + station + "&station_code=" + station_code;
-        }
-      } else if (searchType == "到达站") {
-        if (station == '北京') {
-          station_code = 'BJP'
-          window.location.href =
-              "https://kyfw.12306.cn/otn/zwdch/init?cc="+ trains + "&cxlx=1&station_name=" + station + "&station_code=" + station_code;
-        }
-      }
-    },
-    jpk() {
-      if (this.ruleForm3.name1 == "Z2") {
-        window.location.href =
-            "https://www.12306.cn/index/view/infos/ticket_check.html?isremoveStore=1";
-      }
-    },
-    qssj(station, date) {
-      let city;
-      if (this.ruleForm4.station == "北京") {
-        city = 'BJP';
-        window.location.href =
-            "https://www.12306.cn/index/view/infos/sale_time.html?station_name=" + station + "&station_code=" + city + "&trainDate=" + date;
-      } else if (this.ruleForm4.station == "上海") {
-        city = 'SHH';
-        window.location.href =
-            "https://www.12306.cn/index/view/infos/sale_time.html?station_name=" + station + "&station_code=" + city + "&trainDate=" + date;
-      } else if (this.ruleForm4.station == "郑州") {
-        city = 'ZZF';
-        window.location.href =
-            "https://www.12306.cn/index/view/infos/sale_time.html?station_name=" + station + "&station_code=" + city + "&trainDate=" + date;
-      }
-    },
     jump (){
       let weatherid;
        if(this.ruleForm5.weather == "北京"){
@@ -610,11 +549,15 @@ export default {
        else
        {alert("没有输入城市的天气，请检查后重试！")}
     },
-    yd() {
-        window.location.href =
-            "https://exservice.12306.cn/excater/list.html?date=" + this.form4.date + "&code=" + this.form4.departure;
+    submitForm(formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+        } else {
+          console.log('error submit!!');
+          return false;
+        }
+      });
     },
-
     // 获取日期
     handleHistoryData(val) {
       console.log(val)
