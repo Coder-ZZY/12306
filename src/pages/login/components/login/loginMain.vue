@@ -204,6 +204,7 @@
 import { ElMessage } from 'element-plus'
 // eslint-disable-next-line no-unused-vars
 import {Axios as request} from "axios";
+import router from "@/router";
 export default {
   name:'Login',
   data(){
@@ -257,23 +258,6 @@ export default {
   }
   },
   methods:{
-    checkpwd(){
-      //若两个密码都不为空且
-      if(this.regUser.regRePwd.length !== 0 && this.regUser.regPwd !== 0){
-        this.pwdexistempty=false;
-        if(this.regUser.regRePwd === this.regUser.regPwd){
-          //若两个密码一致，则没问题
-          this.pwdmessage=true;
-        }
-        else{
-          //两个密码不一致，显示提示语
-          this.pwdmessage=false;
-        }
-      }
-      else{
-        this.pwdexistempty=true;
-      }
-    },
     changeToRegiest(){
       this.styleObj.bordertoprightradius= '0px'
       this.styleObj.borderbottomrightradius='0px'
@@ -319,7 +303,7 @@ export default {
                 setTimeout(() => {
                   let username=this.loginUser.name;
                   sessionStorage.setItem('username', username);
-                  this.$router.push('/index');
+                  router.replace('/index');
                 }, 500);
               }
               else{
@@ -376,13 +360,13 @@ export default {
 
 <style>
 /* @import '../assets/css/Login.css' */
-@import "../../assets/css/animate.css";
+@import "../../../../assets/css/animate.css";
 .base{
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("../../assets/bg/login.jpg");
+  background-image: url("../../../../assets/bg/login.jpg");
   background-size: 100%;
 }
 .loginAndRegist{
@@ -425,7 +409,7 @@ export default {
   z-index:2;
   top: 0;
   right: 0;
-  background-image: url("../../assets/bg/welcome.webp");
+  background-image: url("../../../../assets/bg/welcome.webp");
   background-size: 90%;
 }
 .showInfo:hover{

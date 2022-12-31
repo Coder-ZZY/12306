@@ -2,7 +2,7 @@
 <div style="position: absolute;top: 10px;height: 120px">
   <div class = "up">
     <div class = "logo">
-      <img src="../../assets/logo2.png" style="height: 50px">
+      <img src="../../../../assets/logo2.png" style="height: 50px">
     </div>
   </div>
 </div>

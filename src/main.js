@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 /* import specific icons */
 import {faPenToSquare,faTrain,faUtensils,faClock,faMagnifyingGlass,faRetweet
     ,faRightLeft,faRightLong,faCloudSun,faCheckToSlot,faBellConcierge,faHourglassStart,faClockRotateLeft} from "@fortawesome/free-solid-svg-icons";
+//axios.defaults.baseURL = 'http://39.105.216.99:8080/api'
 axios.defaults.baseURL = 'http://localhost:8443/api'
 axios.defaults.withCredentials = true
 const Vue = createApp(App)
